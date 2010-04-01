@@ -1,0 +1,28 @@
+digraph G {
+
+    size="5,4";
+
+    Rectorado -> "Fac. 1" [label="7"];
+    Rectorado -> "Fac. 2" [label="5"];
+    Rectorado -> "Fac. 3" [label="5"];
+    Rectorado -> "Fac. 4" [label="6"];
+    Rectorado -> "Fac. 5" [label="2"];
+    Rectorado -> "Fac. 6" [label="4"];
+    
+    "Fac. 1"  -> "Fac. 2" [label="3"];
+    "Fac. 1"  -> "Fac. 6" [label="3"];
+
+    "Fac. 2"  -> "Fac. 3" [label="2"];
+    "Fac. 2"  -> "Fac. 5" [label="5"];
+
+    "Fac. 3"  -> "Fac. 4" [label="3"];
+
+    "Fac. 4"  -> "Fac. 1" [label="6"];
+    "Fac. 4"  -> "Fac. 2" [label="1"];
+    "Fac. 4"  -> "Fac. 5" [label="3"];
+
+    "Fac. 5"  -> "Fac. 4" [label="6"];
+
+    "Fac. 6"  -> "Fac. 1" [label="2"];
+    "Fac. 6"  -> "Fac. 3" [label="3"];
+}
