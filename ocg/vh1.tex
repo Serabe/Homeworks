@@ -1,0 +1,111 @@
+\documentclass[12pt, oneside, a4paper]{article}
+\usepackage{graphicx}
+\usepackage{ifpdf}
+\usepackage{amsfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithmic}
+\begin{document}
+\title{OCG Hoja 1}\author{Sergio Arbeo}\date{Marzo, 2010}\maketitle
+\paragraph{1.}\label{ssub:1_} % (fold)
+Sea $G=(V,E)$ un grafo, donde $V=\{1,...,n\}$, $E=\{e_{1},...,e_{m}\}$
+y $n,m\in\mathbb{N}$, y sea $W=\{1,...,q\}$, donde $q\in\mathbb{N}$ y
+$q<n$. Para cada uno de los casos siguientes, dise\~nar un algoritmo que
+determine la incidencia de $W$ y calcular su complejidad.
+
+
+\subparagraph{(a)} $G$ está expresado mediante su matriz de adyacencia.
+
+Sea $M$ la matriz de adyacencia.
+
+\begin{algorithmic}[1]
+\STATE $incidence \gets [false,...,false]$
+\FOR{$r$ in $W$}
+  \FOR{$s$ in $V\backslash W$}
+    \STATE $incidence[s] \gets M[r][s] > 0$
+  \ENDFOR
+\ENDFOR
+\end{algorithmic}
+
+El algoritmo funciona recorriendo primero los nodos contenidos en $W$
+y para cada uno de ellos, se recorren los nodos en $V\backslash W$. Si
+el valor de la matriz de adyacencia para dichos nodos es mayor que
+cero, el nodo de $V\backslash W$ se añade a la incidencia.
+
+El bucle exterior se ejecuta $q$ veces mientras que el interior se
+ejecuta $n-q$ veces. El interior de cada bucle toma tiempo constante
+(asignación, lectura y comparación son operaciones elementales) por lo
+que la complejidad de los bucles es $O(q\cdot (n-q))$. Tomando el
+tiempo de inicialización de $incidences$ como constante, se tiene que
+éste es la complejidad del algoritmo.
+
+Nótese que la inicialiación de $incidence$ es como mucho $O(n)$, lo cual
+es menor que $O(q\cdot (n-q))$.
+
+\subparagraph{(b)} $G$ está expresado mediante su matriz de
+incidencia.
+
+Sea $M$ la matriz de incidencia.\\\\
+
+\begin{algorithmic}[1]
+\STATE $incidence \gets  [false,...,false]$
+\FOR{$i=1$ to $m$}
+  \STATE $foundNodes \gets 0$
+  \STATE $n \gets 1$
+  \FOR{$j$ in $V\backslash W$}
+    \IF{$M[i][j]==1$}
+      \STATE $n \gets j$
+      \STATE $foundNodes \gets foundNodes + 1$
+    \ENDIF
+  \ENDFOR
+  
+  \IF{$incidence[n] \gets foundNodes == 1$}
+    \FOR{$j$ in $W$}
+      \IF{$M[i][j] ==1$}
+        \STATE $incidence[n] \gets true$
+        \STATE break
+      \ENDIF
+    \ENDFOR
+   \ENDIF
+\ENDFOR
+\end{algorithmic}
+
+En primer lugar, el algoritmo inicialia un array de booleanos, todos a
+false. Después recorre una a una todas las aristas, inicializando las
+variables found-nodes a cero y n a uno. Para cada arista, comprueba todos
+los nodos que no se encuentran en $W$. Si un vértice es extremo de la
+arista entonces n captura el nodo y found-nodes se actualiza sumándole
+uno.
+
+Una vez recorridos los nodos de $V\backslash W$, se comprueba que el
+número de nodos encontrados es 1 (si se han encontrado dos, la arista
+no conecta con ningún nodo en $W$ mientras que si no se ha encontrado
+ninguno, dicha arista no conecta con ningún nodo en $V\backslash
+W$). Si es así, se comprueba que exista algún nodo en $W$ que sea
+extremo de la arista, pues podría ser que la arista fuese un bucle. Si
+se encuentra algún nodo, se marca el nodo encontrado en $V\backslash
+W$ como que está en la incidencia de $W$ (se asigna su número a $n$) y
+se sale del bucle (anidado).
+
+Para calcular la complejidad tenemos que el bucle se ejecuta $m$ veces
+y cada ejecución tarda $O(n-q)$ para el primer bucle y $O(q)$ para el
+segundo, aunque éste no se ejecute siempre. Por lo tanto, cada
+iteración quedaría acotada por $O(\max(n-q, q))$. De esta forma, la
+complejidad del bucle queda como $O(m\cdot\max(n-q,q))$. Tomando la
+inicialización de $incidence$ como constante quedaría dicho valor como
+la complejidad del algoritmo.
+
+\subparagraph{Nota:} se podrían considerar distintas optimizaciones,
+como dejar de considerar en los bucles los nodos que hayamos añadido a
+la incidencia. Dichas optimizaciones no modificarían la complejidad
+expresada en $O$-notación, pues se seguiría teniendo dicha cota para
+el peor caso (en el que la incidencia sea nula). En cambio, se podría
+considerar una optimización que sí mejoraría el tiempo del segundo
+algoritmo:
+
+Redefínase la matriz de incidencia de forma que si una arista es un
+bucle, el valor sea 2 en vez de 1. Así sólo habría que comprobar que
+existe un único nodo en el conjunto más pequeño (obsérvese que la
+condición de los if comprueban la igualdad estricta). De esta forma,
+el tiempo vendría acotado por $O(m\cdot\min(n-q,q))$.
+
+\end{document}
