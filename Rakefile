@@ -1,14 +1,15 @@
-require 'FileUtils'
+require 'fileutils'
 include FileUtils
 
-ROOT_DIR = File.expand_path(__FILE__)
+ROOT_DIR = File.expand_path(File.dirname(__FILE__))
 
 OUTPUT_DIR =File.join(ROOT_DIR, 'build')
 
 mkdir_p OUTPUT_DIR
 
 SRC_DIR = File.join(ROOT_DIR, 'src')
-SRC = Dir.new(SRC_DIR).find_all{|x| File.file?(x)}
+SRC = Dir.glob(File.join(SRC_DIR,'**','*')).find_all{|x| File.file?(x)}
+
 SRC_TEX = SRC.find_all{|x| File.extname(x) == '.tex'}
 
 STYLE_DIR = File.join(ROOT_DIR, 'style')
@@ -24,9 +25,9 @@ end
 IMAGE_IN_TEX_REGEXP = /\\includegraphics(\[h\])?\{([^\}]*\.(jpg|png|eps))\}/
 
 SRC_TEX.each do |src|
-  file src do
+  file File.basename(src) do
     cp src, TMP_DIR.for(src)
-    sh "export TEXINPUTS=.:#{STYLE_DIR}:#{TMP_DIR};pdflatex #{TMP_DIR.for(src)} -output-directory #{OUTPUT_DIR}"
+    sh "export TEXINPUTS=.:#{STYLE_DIR}:#{TMP_DIR}:#{OUTPUT_DIR}:$TEXINPUTS;pdflatex -output-directory #{OUTPUT_DIR} #{TMP_DIR.for(src)}"
   end
   
   File.read(src).scan(IMAGE_IN_TEX_REGEXP).each do |complete_match, option, file, ext|
