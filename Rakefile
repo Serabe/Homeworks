@@ -46,7 +46,7 @@ class String
   end
 end
 
-IMAGE_IN_TEX_REGEXP = /\\includegraphics(\[h\])?\{([^\}]*\.(jpg|png|eps))\}/
+IMAGE_IN_TEX_REGEXP = /\\includegraphics(\[[^\]]*\])?\{([^\}]*\.(jpg|png|eps))\}/
 
 SRC_TEX.each do |src|
   file src.to_task do
