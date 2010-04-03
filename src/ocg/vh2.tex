@@ -50,9 +50,90 @@ minimizar el coste total de las remuneraciones.
 
 \subparagraph{Solución.\\}
 
-En primer lugar, veamos la representación del grafo original:
-\begin{figure}[h]
+\begin{figure}
 \centering
 \includegraphics[height=8cm]{vh2_01.png}
+\caption{\small R}
+\label{fig:vh2-01}
+\end{figure}
+En primer lugar, se puede ver la red original en \ref{fig:vh2-01}.
+Ponemos $R^0=R$ y $k=0$. Calculamos $T_{R^0}$, el cual se puede
+observar en \ref{fig:vh2-02}. Como se puede ver, hay dos
+ciclos.
+
+\begin{figure}
+\centering
+\includegraphics[height=3cm]{vh2_02.png}
+\caption{$T_{R^{0}}$}
+\label{fig:vh2-02}
+\end{figure}
+
+Llamaremos $\mu^1$ al ciclo formado por las facultades 2, 3 y
+4.
+
+Actualizamos $k=1$ y creamos $R^1=R^0_{\mu^1}$ el cual se puede ver
+en \ref{fig:vh2-03}. Los cálculos se pueden observar en la misma
+figura.
+
+\begin{figure}
+\centering
+\includegraphics[width=8cm]{vh2_03.png}
+\caption{$R^{1}$}
+\label{fig:vh2-03}
+\end{figure}
+
+Creamos $T_{R^{1}}$, el cual podemos ver en \ref{fig:vh2-04}.
+
+\begin{figure}
+\centering
+\includegraphics[height=2cm]{vh2_04.png}
+\caption{$T_{R^{1}}$}
+\label{fig:vh2-04}
+\end{figure}
+
+Llamaremos $\mu^2$ al ciclo formado por las facultades 1 y 6.
+
+Actualizamos $k=2$ y creamos $R^2=R^1_{\mu^2}$, el cual se puede ver
+en \ref{fig:vh2-05}. Los cálculos se pueden observar en la misma figura.
+
+\begin{figure}
+\centering
+\includegraphics[height=2.5cm]{vh2_05.png}
+\caption{$R^2$}
+\label{fig:vh2-05}
+\end{figure}
+
+Como se puede observar en \ref{fig:vh2-06}, $T_{R^{2}}$ no contiene
+circuito alguno. Por lo tanto, ponemos $T^{*}_{\mu^{2}}=T_{R^{2}}$.
+
+\begin{figure}
+\centering
+\includegraphics[width=3cm]{vh2_06.png}
+\caption{$T_{R^2}$}
+\label{fig:vh2-06}
+\end{figure}
+
+Consideramos $T^{*}_{\mu^{1}}$ la expansión de $T^{*}_{\mu^{2}}$ que
+podemos ver en \ref{fig:vh2-07}.
+
+\begin{figure}
+\centering
+\includegraphics[width=4cm]{vh2_07.png}
+\caption{$T^{*}_{\mu^1}$}
+\label{fig:vh2-07}
+\end{figure}
+
+Actualizamos $k=1$ y consideramos $T^{*}_{\mu^{0}}$ la expansión de
+$T^{*}_{\mu^{1}}$. Dicha expansión se puede encontran en
+\ref{fig:vh2-08}.
+
+\begin{figure}
+\centering
+\includegraphics[width=4cm]{vh2_08.png}
+\caption{$T^{*}_{\mu^0}$}
+\label{fig:vh2-08}
 \end{figure}
 \end{document}
+
+Actualizamos $k=0$ y paramos. Hemos encontrado una arborescencia
+soporte de mínimo peso (el peso es 15).

@@ -1,0 +1,9 @@
+digraph G {
+        m1 [label="&mu;1"];
+        m2 [label="&mu;2"];
+        
+        Rectorado -> "Fac. 5" [label="2"];
+        Rectorado -> m2 [label="1,(R,6)"];
+        
+        m2        -> m1 [label="1,(6,3)"];
+}

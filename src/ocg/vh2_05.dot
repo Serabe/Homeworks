@@ -1,0 +1,18 @@
+digraph G {
+        m1 [label="&mu;1"];
+        m2 [label="&mu;2"];
+        
+        Rectorado -> m2 [label="5=7-2,(R,1)"];
+        Rectorado -> "Fac. 5" [label="2"];
+        Rectorado -> m2 [label="1=4-3,(R,6)"];
+        
+        m1        -> "Fac. 5" [label="3,(2,5)"];
+        m1        -> m2 [label="4=6-2,(4,1)"];
+        m1        -> "Fac. 5" [label="3,(4,5)"];
+        
+        m2        -> m1 [label="2=3-1,(1,2)"];
+        
+        "Fac. 5"  -> m1 [label="3=6-3,(5,4)"];
+        
+        m2        -> m1 [label="1,(6,3)"];
+}
