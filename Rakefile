@@ -36,6 +36,14 @@ class String
     extmap.merge!({".tex" => ".pdf", ".dot" => ".png"})
     change_ext(self, extmap[File.extname(self)]).gsub(SRC_DIR+File::SEPARATOR,'').gsub('/',':')
   end
+
+  def change_ns_to(new_ns)
+    new_ns + self[(self.rindex(':'))..-1]
+  end
+
+  def ns
+    self[0...(self.rindex(':'))]
+  end
 end
 
 IMAGE_IN_TEX_REGEXP = /\\includegraphics(\[h\])?\{([^\}]*\.(jpg|png|eps))\}/
@@ -47,8 +55,8 @@ SRC_TEX.each do |src|
   end
   
   File.read(src).scan(IMAGE_IN_TEX_REGEXP).each do |complete_match, file, ext, option|
-    puts src.to_task + " => " + file.to_task
-    file src.to_task => file.to_task if ext == 'png'
+    puts src.to_task + " => " + file.to_task.change_ns_to(src.to_task.ns)
+    file src.to_task => file.to_task.change_ns_to(src.to_task.ns) if ext == 'png'
   end
 end
 
@@ -56,7 +64,7 @@ SRC_DOT.each do |src|
   puts src.to_task
   file src.to_task do
     cp src, TMP_DIR.for(src)
-    sh "dot -T#{png} #{TMP_DIR.for(src)} -o #{TMP_DIR.for(src, '.png')}"
+    sh "dot -Tpng #{TMP_DIR.for(src)} -o #{TMP_DIR.for(src, '.png')}"
     cp TMP_DIR.for(src,'.png'), OUTPUT_DIR.for(src,'.png')
   end
 end
