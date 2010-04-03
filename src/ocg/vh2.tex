@@ -4,6 +4,8 @@
 \usepackage{amsfonts}
 \usepackage[utf8]{inputenc}
 \usepackage{algorithmic}
+\usepackage{hyperref}
+\def\figureautorefname{figura}
 \begin{document}
 \title{OCG Hoja 1}\author{Sergio Arbeo}\date{Abril, 2010}\maketitle
 \paragraph{2.}\label{ssub:1_} % (fold)
@@ -56,9 +58,9 @@ minimizar el coste total de las remuneraciones.
 \caption{\small R}
 \label{fig:vh2-01}
 \end{figure}
-En primer lugar, se puede ver la red original en \ref{fig:vh2-01}.
+En primer lugar, se puede ver la red original en \autoref{fig:vh2-01}.
 Ponemos $R^0=R$ y $k=0$. Calculamos $T_{R^0}$, el cual se puede
-observar en \ref{fig:vh2-02}. Como se puede ver, hay dos
+observar en \autoref{fig:vh2-02}. Como se puede ver, hay dos
 ciclos.
 
 \begin{figure}
@@ -72,7 +74,7 @@ Llamaremos $\mu^1$ al ciclo formado por las facultades 2, 3 y
 4.
 
 Actualizamos $k=1$ y creamos $R^1=R^0_{\mu^1}$ el cual se puede ver
-en \ref{fig:vh2-03}. Los cálculos se pueden observar en la misma
+en \autoref{fig:vh2-03}. Los cálculos se pueden observar en la misma
 figura.
 
 \begin{figure}
@@ -82,7 +84,7 @@ figura.
 \label{fig:vh2-03}
 \end{figure}
 
-Creamos $T_{R^{1}}$, el cual podemos ver en \ref{fig:vh2-04}.
+Creamos $T_{R^{1}}$, el cual podemos ver en \autoref{fig:vh2-04}.
 
 \begin{figure}
 \centering
@@ -94,7 +96,7 @@ Creamos $T_{R^{1}}$, el cual podemos ver en \ref{fig:vh2-04}.
 Llamaremos $\mu^2$ al ciclo formado por las facultades 1 y 6.
 
 Actualizamos $k=2$ y creamos $R^2=R^1_{\mu^2}$, el cual se puede ver
-en \ref{fig:vh2-05}. Los cálculos se pueden observar en la misma figura.
+en \autoref{fig:vh2-05}. Los cálculos se pueden observar en la misma figura.
 
 \begin{figure}
 \centering
@@ -103,7 +105,7 @@ en \ref{fig:vh2-05}. Los cálculos se pueden observar en la misma figura.
 \label{fig:vh2-05}
 \end{figure}
 
-Como se puede observar en \ref{fig:vh2-06}, $T_{R^{2}}$ no contiene
+Como se puede observar en \autoref{fig:vh2-06}, $T_{R^{2}}$ no contiene
 circuito alguno. Por lo tanto, ponemos $T^{*}_{\mu^{2}}=T_{R^{2}}$.
 
 \begin{figure}
@@ -114,7 +116,7 @@ circuito alguno. Por lo tanto, ponemos $T^{*}_{\mu^{2}}=T_{R^{2}}$.
 \end{figure}
 
 Consideramos $T^{*}_{\mu^{1}}$ la expansión de $T^{*}_{\mu^{2}}$ que
-podemos ver en \ref{fig:vh2-07}.
+podemos ver en \autoref{fig:vh2-07}.
 
 \begin{figure}
 \centering
@@ -125,7 +127,7 @@ podemos ver en \ref{fig:vh2-07}.
 
 Actualizamos $k=1$ y consideramos $T^{*}_{\mu^{0}}$ la expansión de
 $T^{*}_{\mu^{1}}$. Dicha expansión se puede encontran en
-\ref{fig:vh2-08}.
+\autoref{fig:vh2-08}.
 
 \begin{figure}
 \centering
