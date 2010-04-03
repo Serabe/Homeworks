@@ -1,7 +1,5 @@
 digraph G {
 
-    size="5,4";
-
     Rectorado -> "Fac. 1" [label="7"];
     Rectorado -> "Fac. 2" [label="5"];
     Rectorado -> "Fac. 3" [label="5"];
