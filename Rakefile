@@ -39,8 +39,8 @@ class FileList
   end
 end
 
-CLEAN=FileList.for_extensions(:log,:aux)
-CLOBBER=FileList.for_extensions(:log, :aux, :pdf, :png)
+CLEAN=FileList.for_extensions(:log,:aux, :out) | FileList['tmp/*']
+CLOBBER=CLEAN | FileList.for_extensions(:pdf, :png)
 
 class String
   def to_task()
