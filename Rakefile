@@ -1,3 +1,4 @@
+require 'rake/clean'
 require 'fileutils'
 include FileUtils
 
@@ -30,6 +31,17 @@ mkdir_p TMP_DIR unless File.exist?(TMP_DIR)
   end
 end
 
+class FileList
+  class << self
+    def for_extensions(*exts)
+      exts.map(&:to_s).map{|e| self["**/*.#{e}"]}.inject{|m,o| m|o}
+    end
+  end
+end
+
+CLEAN=FileList.for_extensions(:log,:aux)
+CLOBBER=FileList.for_extensions(:log, :aux, :pdf, :png)
+
 class String
   def to_task()
     extmap = Hash.new {|hash, key| key}
@@ -55,13 +67,11 @@ SRC_TEX.each do |src|
   end
   
   File.read(src).scan(IMAGE_IN_TEX_REGEXP).each do |complete_match, file, ext, option|
-    puts src.to_task + " => " + file.to_task.change_ns_to(src.to_task.ns)
     file src.to_task => file.to_task.change_ns_to(src.to_task.ns) if ext == 'png'
   end
 end
 
 SRC_DOT.each do |src|
-  puts src.to_task
   file src.to_task do
     cp src, TMP_DIR.for(src)
     sh "dot -Tpng #{TMP_DIR.for(src)} -o #{TMP_DIR.for(src, '.png')}"
