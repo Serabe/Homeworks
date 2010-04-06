@@ -59,6 +59,10 @@ minimizar el coste total de las remuneraciones.
 \label{fig:vh2-01}
 \end{figure}
 En primer lugar, se puede ver la red original en \autoref{fig:vh2-01}.
+
+Procedamos a obtener la arborescencia soporte de mínimo peso mediante
+el algoritmo de Edmonds.
+
 Ponemos $R^0=R$ y $k=0$. Calculamos $T_{R^0}$, el cual se puede
 observar en \autoref{fig:vh2-02}. Como se puede ver, hay dos
 ciclos.
@@ -135,7 +139,8 @@ $T^{*}_{\mu^{1}}$. Dicha expansión se puede encontran en
 \caption{$T^{*}_{\mu^0}$}
 \label{fig:vh2-08}
 \end{figure}
-\end{document}
 
 Actualizamos $k=0$ y paramos. Hemos encontrado una arborescencia
 soporte de mínimo peso (el peso es 15).
+
+\end{document}
