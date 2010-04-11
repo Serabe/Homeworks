@@ -1,0 +1,109 @@
+\documentclass[12pt, oneside, a4paper]{article}
+\usepackage{graphicx}
+\usepackage{ifpdf}
+\usepackage{amsfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithmic}
+\usepackage{multirow}
+\usepackage{hyperref}
+\def\figureautorefname{figura}
+\begin{document}
+\title{OCG Hoja voluntaria}\author{Sergio Arbeo}\date{Abril, 2010}\maketitle
+\paragraph{3.}\label{ssub:1_} % (fold)
+El desplazamiento por carretera desde un municipio $A$ hasta otro
+municipio $I$ puede realizarse a través de distintas rutas que pasan
+por los municipios $B$, $C$, $D$, $E$, $F$, $G$ y $H$. Dichas rutas
+constan de diversos tramos que unen pares de municipios, y en cada
+tramo hay un túnel. La siguiente tabla contiene la altura máxima
+(expresada en metros) de los vehículos que pueden pasar por el túnel
+de cada uno de los tramos:
+
+\begin{tabular}{| r | r | r | r | r | r | r | r | r | r | r | r | r | r |}
+\hline
+Tramo  & A-B & A-C & A-D & B-E & B-F & C-E \\
+\hline
+Altura & 3.2   &  2.8  &  2.2  &   2   &  3.6  &  3.7  \\
+\hline
+\end{tabular}
+
+\begin{tabular}{| r | r | r | r | r | r | r | r | r | r | r | r | r | r |}
+\hline
+Tramo  & D-E & D-F &  E-G  &  E-H  &  F-H  &  G-I  & H-I \\
+\hline
+Altura & 3.2 &  4  &  2.9  &  3.5  &  2.1  &  3.3  &  3.8  \\
+\hline
+\end{tabular}
+\\
+\\
+
+Determinar aplicando el algoritmo de Teoría de Grafos más apropiado
+cuál es la altura máxima de los vehículos que podrán desplazarse desde
+$A$ hasta $I$, y qué ruta deberán seguir.
+
+\subparagraph{Solución.\\}
+De la tabla se observa que se puede cambiar $A$ por 1, $B$ por 2,
+etc. de manera que todos los arcos $(i,j)$ verificasen $i<j$.
+
+El grafo original se puede observar en \autoref{fig:vh3-01}.
+
+\begin{figure}
+\centering
+\includegraphics[height=8cm]{vh3_01.png}
+\caption{Grafo original}
+\label{fig:vh3-01}
+\end{figure}
+
+Modificando las ecuaciones de Bellman de forma que $l_{A}=+\infty$ y
+$l_{j}=\max\{\min(l_{i},c_{i,j}) | i\in\{A,B,...,I\}\backslash
+\{j\}\}$, $\forall j\in\{B,C,...,I\}$ y modificando el algoritmo
+\textbf{6.2} se obtendrá la solución. La modificación del algoritmo es
+la modificación natural dada la de las ecuaciones de Bellman, es
+decir, modificar el paso 2 de forma que $argmin$ pase a $argmax$ y que
+las operaciones de longitudes cuadren. Además, si no existe el arco
+$(i,j)$, $c_{i,j}=0$
+
+\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c |}
+\hline
+& i & A=1 & B=2 & C=3 & D=4 & E=5 & F=6 & G=7 & H=8 & I=9\\
+\hline
+\multirow{2}{*}{j=2} & $l_{i}$ & $\infty$ &  3.2 & & & & & & & \\
+    & $p(i)$ &  & 1 & & & & & & &\\ 
+\hline\hline
+\multirow{2}{*}{j=3} & $l_{i}$ & $\infty$ &  3.2 & 2.8 & & & & & & \\
+    & $p(i)$ &  & 1 & 1 & & & & & &\\ 
+\hline\hline
+\multirow{2}{*}{j=4} & $l_{i}$ & $\infty$ &  3.2 & 2.8 & 2.2 & & & & & \\
+    & $p(i)$ &  & 1 & 1 & 1 & & & & &\\ 
+\hline\hline
+\multirow{2}{*}{j=5} & $l_{i}$ & $\infty$ &  3.2 & 2.8 & 2.2 & 2.8 & & & & \\
+    & $p(i)$ &  & 1 & 1 & 1 & 3 & & & &\\ 
+\hline\hline
+\multirow{2}{*}{j=6} & $l_{i}$ & $\infty$ &  3.2 & 2.8 & 2.2 & 2.8 & 3.2 & & & \\
+    & $p(i)$ &  & 1 & 1 & 1 & 3 & 2 & & &\\ 
+\hline\hline
+\multirow{2}{*}{j=7} & $l_{i}$ & $\infty$ &  3.2 & 2.8 & 2.2 & 2.8 &
+3.2 & 2.8 & & \\
+    & $p(i)$ &  & 1 & 1 & 1 & 3 & 2 & 5 & &\\ 
+\hline\hline
+\multirow{2}{*}{j=8} & $l_{i}$ & $\infty$ &  3.2 & 2.8 & 2.2 & 2.8 &
+3.2 & 2.8 & 2.8 & \\
+    & $p(i)$ &  & 1 & 1 & 1 & 3 & 2 & 5 & 5 &\\ 
+\hline\hline
+\multirow{2}{*}{j=9} & $l_{i}$ & $\infty$ &  3.2 & 2.8 & 2.2 & 2.8 &
+3.2 & 2.8 & 2.8 & 2.8 \\
+    & $p(i)$ &  & 1 & 1 & 1 & 3 & 2 & 5 & 5 & $\{7,8\}$\\ 
+\hline
+\end{tabular}
+\\
+Por lo tanto existen dos caminos óptimos, que se muestran en
+\autoref{fig:vh3-02}. Los dos caminos permiten vehículos de hasta 2.8
+metros de altura.
+
+\begin{figure}
+\centering
+\includegraphics[width=3cm]{vh3_02.png}
+\caption{Caminos}
+\label{fig:vh3-02}
+\end{figure}
+
+\end{document}

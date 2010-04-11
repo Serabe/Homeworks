@@ -1,0 +1,23 @@
+digraph G {
+    
+    A -> B [label="3.2"];
+    A -> C [label="2.8"];
+    A -> D [label="2.2"];
+    
+    B -> E [label="2"];
+    B -> F [label="3.6"];
+    
+    C -> E [label="3.7"];
+    
+    D -> E [label="3.2"];
+    D -> F [label="4"];
+    
+    E -> G [label="2.9"];
+    E -> H [label="3.5"];
+    
+    F -> H [label="2.1"];
+    
+    G -> I [label="3.3"];
+    
+    H -> I [label="3.8"];
+}
