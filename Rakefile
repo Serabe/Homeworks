@@ -2,6 +2,8 @@ require 'rake/clean'
 require 'fileutils'
 include FileUtils
 
+GRAPHVIZ_APP = 'circo'
+
 ROOT_DIR = File.expand_path(File.dirname(__FILE__))
 
 OUTPUT_DIR =File.join(ROOT_DIR, 'build')
@@ -74,7 +76,7 @@ end
 SRC_DOT.each do |src|
   file src.to_task do
     cp src, TMP_DIR.for(src)
-    sh "dot -Tpng #{TMP_DIR.for(src)} -o #{TMP_DIR.for(src, '.png')}"
+    sh "#{GRAPHVIZ_APP} -Tpng #{TMP_DIR.for(src)} -o #{TMP_DIR.for(src, '.png')}"
     cp TMP_DIR.for(src,'.png'), OUTPUT_DIR.for(src,'.png')
   end
 end
