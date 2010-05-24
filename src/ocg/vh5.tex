@@ -1,0 +1,113 @@
+\documentclass[12pt, oneside, a4paper]{article}
+\usepackage{graphicx}
+\usepackage{ifpdf}
+\usepackage{amsfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithmic}
+\usepackage{hyperref}
+\def\figureautorefname{figura}
+\begin{document}
+\title{OCG Hoja voluntaria}\author{Sergio Arbeo}\date{Mayo, 2010}\maketitle
+\paragraph{5.}\label{ssub:1_} % (fold)
+Considérese el siguiente grafo $G=(V,E)$:
+
+\begin{figure}[h]
+\centering
+\includegraphics[height=5cm]{vh5_01.png}
+\caption{Grafo original}
+\label{fig:vh4-01}
+\end{figure}
+
+
+\subparagraph{(a)} Aplicar a $G$ el algoritmo de determinación de un emparejamiento
+maximal eligiendo siempre el menor vértice que satisfaga las
+condiciones requeridas.
+
+\subparagraph{Solución.\\}
+
+
+{\bf Paso 1.}
+$V'={1,2,3,4,5,6,7,8,9,10,11,12,13}$,
+$M=\emptyset$.
+
+{\bf Paso 2.} $1\in V'$,
+$V'=V'\backslash
+\{1\}$. $\Gamma(1)\cap V'=\{3, 4\}\neq
+\emptyset$. Elegimos
+$3\in\Gamma(1)\cap V'$ y ponemos
+$V'=V'\backslash \{3\}$, $M=M\cup\{\{1,3\}\}$.
+
+{\bf Paso 3.} Como $|V'|\not\leq 1$
+volvemos al paso 2.
+
+{\bf Paso 2.} $2\in V'$, $V'=V'\backslash
+\{2\}$. $\Gamma(2)\cap V'=\{4, 5, 6,
+10\}\neq\emptyset$. Elegimos
+$4\in\Gamma(2)\cap V'$ y ponemos
+$V'=V'\backslash \{4\}$,
+$M=M\cup\{\{2,4\}\}$.
+
+{\bf Paso 3.} Como $|V'|\not\leq 1$
+volvemos al paso 2.
+
+{\bf Paso 2.} $5\in V'$, $V'=V'\backslash
+\{5\}$. $\Gamma(5)\cap V'=\{8, 9, 10,
+12\}\neq\emptyset$. Elegimos
+$8\in\Gamma(5)\cap V'$ y ponemos
+$V'=V'\backslash \{8\}$,
+$M=M\cup\{\{5,8\}\}$.
+
+{\bf Paso 3.} Como $|V'|\not\leq 1$
+volvemos al paso 2.
+
+{\bf Paso 2.} $6\in V'$, $V'=V'\backslash
+\{6\}$. $\Gamma(6)\cap
+V'=\{10\}\neq\emptyset$. Elegimos
+$10\in\Gamma(6)\cap V'$ y ponemos
+$V'=V'\backslash \{10\}$,
+$M=M\cup\{\{6,10\}\}$.
+
+{\bf Paso 3.} Como $|V'|\not\leq 1$
+volvemos al paso 2.
+
+{\bf Paso 2.} $7\in V'$, $V'=V'\backslash
+\{7\}$. $\Gamma(7)\cap
+V'=\emptyset$.
+
+{\bf Paso 3.} Como $|V'|\not\leq 1$
+volvemos al paso 2.
+
+{\bf Paso 2.} $9\in V'$, $V'=V'\backslash
+\{9\}$. $\Gamma(9)\cap
+V'=\emptyset$.
+
+{\bf Paso 3.} Como $|V'|\not\leq 1$
+volvemos al paso 2.
+
+{\bf Paso 2.} $11\in V'$, $V'=V'\backslash
+\{11\}$. $\Gamma(11)\cap
+V'=\emptyset$.
+
+{\bf Paso 3.} Como $|V'|\not\leq 1$
+volvemos al paso 2.
+
+{\bf Paso 2.} $12\in V'$, $V'=V'\backslash
+\{12\}$. $\Gamma(12)\cap
+V'=\emptyset$.
+
+{\bf Paso 3.} Como $|V'|\leq 1$,
+hemnos terminado.
+
+$M=\{\{1,3\},\{2,4\},\{5,8\},\{6,10\}\}$
+es un emparejamiento maximal.
+
+\subparagraph{(b)} Tomando como emparejamiento inicial de $G$ el obtenido en el
+apartado anterior, determinar el emparejamiento de $G$ de máximo
+cardinal aplicando el algoritmo de Teoría de Grafos más apropiado,
+eligiendo para cada paso el menor vértice que satisfaga las
+condiciones requeridas.
+
+\subparagraph{Solución.\\}
+
+
+\end{document}
