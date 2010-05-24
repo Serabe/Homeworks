@@ -11,9 +11,9 @@
 \paragraph{4.}\label{ssub:1_} % (fold)
 Considérese el siguiente digrafo $G=(V,U)$
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[height=8cm]{vh4_01.png}
+\includegraphics[height=3cm]{vh4_01.png}
 \caption{Grafo original}
 \label{fig:vh4-01}
 \end{figure}
@@ -21,7 +21,8 @@ Considérese el siguiente digrafo $G=(V,U)$
 Para cada arco $u\in U$, la siguiente tabla contiene la mínima
 cantidad de flujo $b(u)$ que ha de pasar por $u$, la máxima cantidad
 de flujo $c(u)$ que puede pasar por $u$ y el coste $d(u)$ de enviar
-cada unidad de flujo a través de $u$:
+cada unidad de flujo a través de $u$:\\
+
 
 \begin{tabular}{| c | c | c | c |}
 \hline
@@ -36,15 +37,104 @@ $u$   & $b(u)$ & $c(u)$ & $d(u)$ \\
 (5,4) &   1    &   3    &   1    \\
 (5,6) &   0    &   3    &   4    \\
 \hline
-\end{tabular}
+\end{tabular}\\
+
 
 Aplicar el algoritmo de Teoría de Grafos más apropiado para determinar
-un flujo compatible en $G$ desde 1 hasta 6 con valor $\phi_{0}=7$ de
+un flujo compatible en $G$ desde 1 hasta 6 con valor $\varphi_{0}=7$ de
 mínimo coste, tomando como flujo inicial el nulo (calcular el coste
 del flujo obtenido).
 
 \subparagraph{Solución.\\}
 
+Para hallar el flujo compatible en $G$ de mínimo coste aplicaremos el
+algoritmo de Busacker-Gowen-Klein. Para ello, primero se ha de usar el algoritmo de
+Herz para encontrar un flujo compatible $\varphi^*$ en $G$.
 
+En primer lugar, etiquetamos a partir del arco $(1,3)$ los arcos
+$(3,5)$, $(5,6)$ y $(6,1)$. Como aún no es un flujo compatible, etiquetamos a
+partir del arco $(2,4)$ los arcos $(4,6)$, $(6,1)$ y
+$(1,2)$. Finalmente, etiquetamos a partir del arco $(5,4)$ el $(4,6)$ y
+el $(6,5)$, retrocediendo flujo por este último El
+resultado se puede observar en \autoref{fig:vh4-02}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[height=3cm]{vh4_02.png}
+\caption{Flujo compatible}
+\label{fig:vh4-02}
+\end{figure}
+
+Se observa que $\varphi_{0}^{*}=7$. Hecho esto, pasamos al paso dos del algoritmo de Busacker-Gowain-Klein. Podemos ver
+$R_{\varphi^{*}}$ en \autoref{fig:vh4-03}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[height=4cm]{vh4_03.png}
+\caption{$R_{\varphi^{*}}$}
+\label{fig:vh4-03}
+\end{figure}
+
+Podemos observar un ciclo de longitud negativa en
+$\mu=\{(4,2), (2,1), (1,3), (3,5), (5,4)\}$. $c(\mu)$ sería:
+
+$$
+c(\mu)= \min\{
+\min\{5-3,5-3,3-2\},
+\min\{4-1,4-0\}
+\}=1
+$$
+
+El nuevo flujo se puede ver en \autoref{fig:vh4-04}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[height=4cm]{vh4_04.png}
+\caption{Nuevo flujo.}
+\label{fig:vh4-04}
+\end{figure}
+
+Recalculamos $R_{\varphi^{*}}$, y nos queda lo que se observa en
+\autoref{fig:vh4-05}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[height=4cm]{vh4_05.png}
+\caption{$R_{\varphi^{*}}$}
+\label{fig:vh4-05}
+\end{figure}
+
+El ciclo $\mu=\{(6, 4), (4, 2), (2, 1), (1, 3), (3, 5), (5, 6)\}$ tiene
+longitud negativa.
+
+$$
+c(\mu)= \min\{
+\min\{5-4,5-4,3-1\},
+\min\{6-2, 3-1, 3-0\}
+\}=1
+$$
+
+Por lo que el nuevo flujo se puede observar en \autoref{fig:vh4-06}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[height=4cm]{vh4_06.png}
+\caption{Tercer flujo}
+\label{fig:vh4-06}
+\end{figure}
+
+Recalculamos $R_{\varphi^{*}}$ en \autoref{fig:vh4-07}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[height=4cm]{vh4_07.png}
+\caption{Último $R_{\varphi^{*}}$}
+\label{fig:vh4-07}
+\end{figure}
+
+Este $R_{\varphi^{*}}$ ya no contiene ciclos de longitud negativa, por
+lo tanto, el paso tres del algoritmo nos confirma que el flujo
+observado en \autoref{fig:vh4-06} es un flujo compatible de mínimo
+coste, en este caso, 55.
 
 \end{document}
