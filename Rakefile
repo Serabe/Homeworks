@@ -2,7 +2,7 @@ require 'rake/clean'
 require 'fileutils'
 include FileUtils
 
-GRAPHVIZ_APP = 'circo'
+GRAPHVIZ_APP = 'dot'
 
 ROOT_DIR = File.expand_path(File.dirname(__FILE__))
 
