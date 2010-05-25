@@ -109,5 +109,212 @@ condiciones requeridas.
 
 \subparagraph{Solución.\\}
 
+Denotaremos los pasos por 8.\{2,3\}.x siendo 8.y el algoritmo y x el
+número de paso.\\
+
+{\bf Paso 8.3.1.} Cogemos $M=\{\{1,3\},\{2,4\},\{5,8\},\{6,10\}\}$ y $R=\{7, 9, 11, 12, 13\}$.\\
+
+{\bf Paso 8.3.2.} Como $|R|\not\leq 1$ escogemos $r=7$ y actualizamos
+$R=\{9, 11, 12, 13\}$.\\
+
+{\bf Paso 8.3.3.} Pasamos a aplicar el algoritmo 8.2.\\
+
+{\bf Paso 8.2.1.} Ponemos $G^{0}=G$, $M^{0}=M$, $V^{0}=\{7\}$,
+$E^{0}=\emptyset$, $k=0$ y $q(v)=0$, $\forall v\in V$.\\
+
+{\bf Paso 8.2.2.} El único vértice en $V^{0}$ es $v^{*}=7$ y cumple las
+características ($a(7)=0$ y $q(7)=0$). Ponemos $q(7)=1$.\\
+
+{\bf Paso 8.2.3.} Como $\not\exists v\in\Gamma(v^{*})$ no saturado por
+$M^{0}$, ponemos $V'=\Gamma(7)\\{v\in V^{0}|\{v*,v\}\in
+  E^{0}\}=\{3,4\}$ (a partir de ahora pondré el resultado directo).\\
+
+{\bf Paso 8.2.4.} $V'\neq \emptyset$ por lo que cogemos $v=3\in V'$ y
+actualizamos $V'=\{4\}$.\\
+
+{\bf Paso 8.2.5.} $3\not\in V^{0}$\\
+
+{\bf Paso 8.2.6.} $3\not\in V^{0}$, por lo que ponemos $V^{0}=\{1,3,7\}$ y
+$E^{0}=\{\{7,3\}, \{1,3\}\}$. Ir al paso 8.2.4.\\
+
+{\bf Paso 8.2.4.} Puesto que $V'\neq \emptyset$, cogemos $v=4\in V'$ y
+actualizamos $V'=\emptyset$.\\
+
+{\bf Paso 8.2.5.} $4\not\in V^{0}$\\
+
+{\bf Paso 8.2.6.} $4\not\in V^{0}$, por lo que ponemos
+$V^{0}=\{1,2,3,4,7\}$ y $E^{0}=E^{0}\cup\{\{4,7\},\{2,4\}\}$. Vamos al
+paso 8.2.4.\\
+
+{\bf Paso 8.2.4.} Puesto que $V'=\emptyset$, vamos al paso 8.2.2.\\
+
+{\bf Paso 8.2.2.} Para $v^{*}=1$ se verifica que $a(1)=2$ es par y
+$q(1)=0$. Ponemos $q(1)=1$.\\
+
+{\bf Paso 8.2.3.} Puesto que no existe un vértice no saturado por
+$M^{0}$ en la incidencia de 1, ponemos $V'=\{4\}$\\
+
+% SUPOSICIÓN
+{\bf Paso 8.2.4.} $V'\neq\emptyset$, por lo que ponemos $v=4$,
+$V'=\emptyset$.\\
+
+{\bf Paso 8.2.5.} $4\in V^{0}$, pero $a(4)$ no es par. Vamos al paso
+8.2.2.\\
+
+{\bf Paso 8.2.2.} $v^{*}=2$ verifica que $a(2)=2$ es par y que
+$q(2)=0$. Ponemos $q(2)=1$.\\
+
+{\bf Paso 8.2.3.} $\not\exists v\in\Gamma(2)$ no saturado por $M^{0}$,
+por lo que ponemos $V'=\{5,6,10\}$.\\
+
+{\bf Paso 8.2.4.} Cogemos $v=5\in V'$ y ponemos $V'=\{6,10\}$.\\
+
+{\bf Paso 8.2.5.} $5\not\in V^{0}$\\
+
+{\bf Paso 8.2.6.} $5\not\in V^{0}$. Actualizamos
+$V'=\{1,2,3,4,5,7,8\}$ y $E^{0}=E^{0}\cup\{\{5,8\},\{2,5\}\}$. Vamos
+al paso 8.2.4.\\
+
+{\bf Paso 8.2.4.} Puesto que $V'\neq\emptyset$, cogemos $v=6\in V'$ y
+actualizamos $V'=\{10\}$.\\
+
+{\bf Paso 8.2.5.} $6\not\in V^{0}$\\
+
+{\bf Paso 8.2.6.} $6\not\in V^{0}$, por lo que actualizamos
+$V^{0}=\{1,2,3,4,5,6,7,8,10\}$ y
+$E^{0}=E^{0}\cup\{\{2,6\},\{6,10\}\}$. Volvemos al paso 8.2.4.\\
+
+{\bf Paso 8.2.4.} Cogemos $v=10\in V'$ y actualizamos $V'=\emptyset$.\\
+
+{\bf Paso 8.2.5.} Puesto que $10\in V^{0}$ y $a(10)=4$, por lo que es
+par. Actualizamos $E^{0}=E^{0}\cup\{\{2,10\}\}$, $k=1$. El único ciclo
+contenido en $E^{0}$ es el formado por los vértices
+$W^{1}=\{2,6,10\}$. Restringimos $G^{1}=G^{0}/W^{1}$, $M^{1}$ es como
+$M^{0}$ eliminando $\{6,10\}$ (pues ambos se transforman en el nodo
+14) y modificando $\{2,4\}$ por
+$\{4,14\}$. $V^{1}=\{1,3,4,5,7,8,14\}$,
+$E^{1}=\{\{3,7\},\{1,3\},\{4,7\},\{4,14\},\{5,14\},\{4,8\}\}$  y
+$q(14)=0$. Volvemos al paso 8.2.2.\\
+
+{\bf Paso 8.2.2.} $v=14\in V^{1}$ y $a(14)=2<4=a(8)$. Ponemos
+$q(14)=1$.\\
+
+{\bf Paso 8.2.3.} $9\in\Gamma(14)$ (pues 10 estaba conectado con 9) y
+9 no está saturado por $M^{1}$, por lo que se determina una cadena
+incremental. Dicha cadena incremental es $7, 4, 2, 6, 10, 9$. Vamos al
+paso 8.3.3.\\
+
+{\bf Paso 8.3.3.} Aplicamos la cadena incremental anterior a $M$ y
+resulta en\\
+
+$M = \{\{1,3\},\{2,6\},\{4,7\},\{5,8\},\{9,10\}\}$.\\
+
+Actualizamos $R=\{11,12,13\}$ y volvemos al paso 8.3.2.\\
+
+{\bf Paso 8.3.2} Cogemos $r=11$ y ponemos $R=\{12,13\}$. Vamos al paso
+8.2.1.\\
+
+{\bf Paso 8.2.1.} Ponemos $G^{0}=G$, $M^{0}=M$, $V^{0}=\{11\}$,
+$E^{0}=\emptyset$, $k=0$ y $q(v)=0$, $\forall v\inV$.\\
+
+{\bf Paso 8.2.2.} Cogemos $v^{*}=11$ y ponemos $q(11)=1$.
+
+{\bf Paso 8.2.3.} El algoritmo nos obliga a poner $V'=\{4\}$.
+
+{\bf Paso 8.2.4.} Cogemos $v=4$, actualizamos $V'=\emptyset$.
+
+{\bf Paso 8.2.5.} No se cumplen las condiciones de este paso.
+
+{\bf Paso 8.2.6.} Actualizamos $V^{0}=\{4,7,11\}$ y
+$E^{0}=\{\{4,11\},\{7,11\}\}$. Volvemos al paso 4.\\
+
+{\bf Paso 8.2.4.} Volvemos al paso 8.2.2.\\
+
+{\bf Paso 8.2.2.} Cogemos $v^{*}=7$ y ponemos $q(7)=7$.\\
+
+{\bf Paso 8.2.3.} Ponemos $V'=\{3\}$.\\
+
+{\bf Paso 8.2.4.} Ponemos $v=3$ y actualizamos $V'=\emptyset$.\\
+
+{\bf Paso 8.2.5.} $3\not\in V^{0}$.\\
+
+{\bf Paso 8.2.6.} Actualizamos $V^{0}=\{1,3,4,7,11\}$ y
+$E^{0}=E^{0}\cup\{\{3,7\},\{1,3\}\}$. Volvemos al paso 8.2.4.\\
+
+{\bf Paso 8.2.4.} Puesto que $V'=\emptyset$, volvemos al paso 8.2.2.\\
+
+{\bf Paso 8.2.2.} Cogemos $v^{*}=1$ y ponemos $q(1)=1$.\\
+
+{\bf Paso 8.2.3.} Inicializamos $V'=\{4\}$.\\
+
+{\bf Paso 8.2.4.} Ponemos $v=4$, $V'=\emptyset$.\\
+
+{\bf Paso 8.2.5.} $4\in V$, pero $a(4)$ es impar. Volvemos al paso
+8.2.2.\\
+
+{\bf Paso 8.2.2.} $\not\exists v\in V^{0}$ tal que $a(v)$ sea par y
+$q(v)=0$. Por lo tanto no existe cadena incremental tal que 11 sea uno
+de sus extremos. Volvemos al paso 8.3.2.\\
+
+{\bf Paso 8.3.2.} Puesto que $R=\{12, 13\}$, cogemos $r=12$ y dejamos
+$R=\{13\}$. Reiniciamos el algoritmo $8.2.$.\\
+
+{\bf Paso 8.2.1.} Inicializamos $G^{0}=G$, $M^{0}=M$, $V^{0}=\{12\}$,
+$E^{0}=\emptyset$, $k=0$ y $q(v)=0$, $\forall v\in V$.\\
+
+{\bf Paso 8.2.2.} Cogemos $v^{*}=12$ y ponemos $q(12)=1$.\\
+
+{\bf Paso 8.2.3.} Ponemos $V'=\{5\}$.\\
+
+{\bf Paso 8.2.4.} Cogemos $v=5$, $V'=\emptyset$.\\
+
+{\bf Paso 8.2.5.} $5\not\in V^{0}$.\\
+
+{\bf Paso 8.2.6.} Actualizamos $V^{0}=\{5,8,12\}$ y
+$E^{0}=\{\{5,12\},\{5,8\}\}$. Volvemos al paso 8.2.4.\\
+
+{\bf Paso 8.2.4.} Volvemos al paso 8.2.2.\\
+
+{\bf Paso 8.2.2.} Cogemos $v^{*}=8$ y ponemos $q(8)=1$.\\
+
+{\bf Paso 8.2.3.} Ponemos $V'=\{4\}$.\\
+
+{\bf Paso 8.2.4.} Cogemos $v=4$ y actualizamos $V'=\emptyset$.\\
+
+{\bf Paso 8.2.5.} $4\not\in V^{0}$.\\
+
+{\bf Paso 8.2.6.} Actualizamos $V^{0}=\{4,5,7,8,12\}$ y
+$E^{0}=E^{0}\cup\{\{4,8\},\{4,7\}\}$. Volvemos al paso 8.2.4.\\
+
+{\bf Paso 8.2.4.} Volvemos al paso 8.2.2 pues $V'=\emptyset$\\
+
+{\bf Paso 8.2.2.} Cogemos $v^{*}=7$ y ponemos $q(7)=1$.\\
+
+{\bf Paso 8.2.3.} Ponemos $V'=\{3\}$.\\
+
+{\bf Paso 8.2.4.} Cogemos $v=3$ y lo quitamos de $V'$, quedando
+$V'=\emptyset$\\
+
+{\bf Paso 8.2.5.} $3\not\in V^{0}$.\\
+
+{\bf Paso 8.2.6.} Actualizamos $V^{0}=\{1,3,4,5,7,8,12\}$ y
+$E^{0}=E^{0}\cup\{\{3,7\},\{1,3\}\}$. Volvemos al paso 8.2.4.\\
+
+{\bf Paso 8.2.4.} Volvemos al paso 8.2.2.\\
+
+{\bf Paso 8.2.2.} Cogemos $v^{*}=1$ y ponemos $q(1)=1$.\\
+
+{\bf Paso 8.2.3.} Ponemos $V'=\{4\}$.\\
+
+{\bf Paso 8.2.4.} Cogemos $v=4\in V'$ y $V'=\emptyset$.\\
+
+{\bf Paso 8.2.5.} $4\in V^{0}$. Volvemos al paso 2.\\
+
+{\bf Paso 8.2.2.} Volvemos al 8.3.2 pues $\not\exists v\in V^{0}$ tal
+que $a(v)$ sea par y $q(v)=0$.\\
+
+{\bf Paso 8.3.2.} Puesto que $|R|=1\leq 1$ paramos. Hemos encontrado
+un emparejamiento de máximo cardinal. Éste es
+$M=\{\{1,3\},\{2,6\},\{4,7\},\{5,8\},\{9,10\}\}$.\\ 
 
 \end{document}
